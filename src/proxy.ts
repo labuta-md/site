@@ -23,7 +23,10 @@ export async function proxy(request: NextRequest) {
   // Keep the Supabase sign-in fresh.
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-  if (url && key) {
+  if (!url || !key) {
+    // Demo mode: test data only, keep it out of search engines.
+    response.headers.set("X-Robots-Tag", "noindex, nofollow");
+  } else {
     const supabase = createServerClient(url, key, {
       cookies: {
         getAll: () => request.cookies.getAll(),

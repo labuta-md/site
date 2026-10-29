@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const name = pet.name || t.species[pet.species];
   return {
     title: pet.status === "lost" ? `${name}: ${t.status.lost}` : name,
-    robots: { index: pet.status === "lost" || pet.status === "adoption" },
+    robots: { index: getStore().mode !== "demo" && (pet.status === "lost" || pet.status === "adoption") },
     openGraph: pet.photo_url ? { images: [pet.photo_url] } : undefined,
   };
 }
