@@ -5,6 +5,7 @@ import { Suspense } from "react";
 import { Header } from "@/components/Header";
 import { currentUser } from "@/lib/auth";
 import { getDict, isLocale, LOCALES } from "@/lib/i18n";
+import { siteUrl } from "@/lib/notify";
 import { getStore } from "@/lib/store";
 import "../globals.css";
 
@@ -18,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   return {
     title: { default: t.meta.title, template: "%s · labuta.md" },
     description: t.meta.description,
-    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
+    metadataBase: new URL(siteUrl()),
     alternates: { languages: Object.fromEntries(LOCALES.map((l) => [l, `/${l}`])) },
   };
 }
