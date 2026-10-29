@@ -4,7 +4,7 @@ import { useActionState } from "react";
 import { signIn, type FormState } from "@/lib/actions";
 import { fmt, type Dict } from "@/lib/i18n";
 
-export function LoginForm({ lang, t }: { lang: string; t: Dict }) {
+export function LoginForm({ lang, t, demo }: { lang: string; t: Dict; demo: boolean }) {
   const [state, action, pending] = useActionState<FormState, FormData>(signIn.bind(null, lang), null);
 
   if (state?.ok) {
@@ -20,6 +20,7 @@ export function LoginForm({ lang, t }: { lang: string; t: Dict }) {
       <div className="field">
         <label htmlFor="email">{t.login.email}</label>
         <input id="email" name="email" type="email" autoComplete="email" required inputMode="email" />
+        {demo && <span className="hint">{t.login.demoHint}</span>}
       </div>
       {state?.error && (
         <p className="notice notice-error" role="alert">
@@ -28,7 +29,7 @@ export function LoginForm({ lang, t }: { lang: string; t: Dict }) {
       )}
       <div>
         <button className="btn" type="submit" disabled={pending}>
-          {t.login.send}
+          {demo ? t.login.demoContinue : t.login.send}
         </button>
       </div>
     </form>

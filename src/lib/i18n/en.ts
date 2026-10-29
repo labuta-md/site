@@ -96,6 +96,7 @@ const en: Dict = {
     demoTitle: "Sign in as a test user",
     demoText: "Demo mode sends no emails. Pick a ready-made user or enter any email above.",
     demoContinue: "Sign in",
+    demoHint: "The site is in demo mode: no email will arrive, you'll be signed in right away with this address.",
     failed: "The link has expired or was already used. Request a new one.",
   },
   me: {
@@ -108,8 +109,8 @@ const en: Dict = {
     phone: "Phone",
     where: "Where",
     roleRequested: "Your request for the “{role}” role is waiting for a moderator.",
-    completeProfile: "Add your city and, if you like, a phone number to your profile so moderators can help if your pet goes missing.",
-    openProfile: "Open profile",
+    completeProfile: "Also add your city and, if you like, a phone number to your profile so moderators can help if your pet goes missing.",
+    openProfile: "Create your profile",
     chipSearch: "Find by microchip",
     chipPlaceholder: "15 digits",
     chipNotFound: "No animal with this microchip.",

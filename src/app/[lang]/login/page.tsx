@@ -22,13 +22,13 @@ export default async function LoginPage({
   return (
     <div className="wrap narrow stack">
       <h1>{t.login.title}</h1>
-      <p>{t.login.text}</p>
+      {getStore().mode !== "demo" && <p>{t.login.text}</p>}
       {error && (
         <p className="notice notice-error" role="alert">
           {t.login.failed}
         </p>
       )}
-      <LoginForm lang={lang} t={t} />
+      <LoginForm lang={lang} t={t} demo={getStore().mode === "demo"} />
 
       {demoUsers.length > 0 && (
         <section className="section">

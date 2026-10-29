@@ -86,6 +86,7 @@ export async function signIn(lang: string, _prev: FormState, form: FormData): Pr
   if (!supabaseConfigured()) {
     const id = await demoSignIn(email, l);
     (await cookies()).set(DEMO_COOKIE, id, { path: "/", httpOnly: true, sameSite: "lax", maxAge: 60 * 60 * 24 * 30 });
+    revalidatePath("/", "layout"); // the header must switch from "Sign in" to the signed-in menu
     redirect(`/${l}/me`);
   }
 
@@ -103,12 +104,14 @@ export async function demoSignInAs(lang: string, form: FormData) {
   if (supabaseConfigured()) return;
   const id = str(form, "user_id", 64);
   if (id) (await cookies()).set(DEMO_COOKIE, id, { path: "/", httpOnly: true, sameSite: "lax", maxAge: 60 * 60 * 24 * 30 });
+  revalidatePath("/", "layout");
   redirect(`/${safeLang(lang)}/me`);
 }
 
 export async function signOut(lang: string) {
   if (supabaseConfigured()) await (await userClient()).auth.signOut();
   else (await cookies()).delete(DEMO_COOKIE);
+  revalidatePath("/", "layout");
   redirect(`/${safeLang(lang)}`);
 }
 

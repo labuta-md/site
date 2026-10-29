@@ -96,6 +96,7 @@ const ro: Dict = {
     demoTitle: "Intrați ca utilizator de test",
     demoText: "În modul demo nu se trimit scrisori. Alegeți un utilizator gata făcut sau introduceți orice e-mail mai sus.",
     demoContinue: "Intră",
+    demoHint: "Acum site-ul funcționează în mod demo: nu veți primi scrisoare, veți intra imediat cu acest e-mail.",
     failed: "Linkul a expirat sau a fost deja folosit. Cereți unul nou.",
   },
   me: {
@@ -108,8 +109,8 @@ const ro: Dict = {
     phone: "Telefon",
     where: "Unde",
     roleRequested: "Cererea pentru rolul „{role}” așteaptă decizia moderatorului.",
-    completeProfile: "Adăugați orașul și, dacă doriți, telefonul în profil, ca moderatorii să poată ajuta dacă animalul dispare.",
-    openProfile: "Deschide profilul",
+    completeProfile: "Adăugați și orașul și, dacă doriți, telefonul în profil, ca moderatorii să poată ajuta dacă animalul dispare.",
+    openProfile: "Creează profilul",
     chipSearch: "Caută după microcip",
     chipPlaceholder: "15 cifre",
     chipNotFound: "Nu există niciun animal cu acest microcip.",
